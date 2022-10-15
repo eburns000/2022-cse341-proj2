@@ -1,0 +1,30 @@
+[{
+  "locationName": "Wenatchee",
+  "streetAddress": "1500 S Mission St",
+  "city": "Wenatchee",
+  "state": "WA",
+  "zip": "98801",
+  "phone": "(509) 888-2505"
+},{
+  "locationName": "Spokane Valley",
+  "streetAddress": "11703 E Sprague Ave, Ste C3",
+  "city": "Spokane Valley",
+  "state": "WA",
+  "zip": "99206",
+  "phone": "(509) 435-0481"
+},{
+  "locationName": "Kennewick",
+  "streetAddress": "7203 W Deschutes Ave, Ste A",
+  "city": "Kennwick",
+  "state": "WA",
+  "zip": "99336",
+  "phone": "(509) 619-7397"
+},{
+  "locationName": "Moses Lake",
+  "streetAddress": "2323 W Broadway Ave, Ste 3",
+  "city": "Moses Lake",
+  "state": "WA",
+  "zip": "98837",
+  "phone": "(509) 707-0336"
+}
+]

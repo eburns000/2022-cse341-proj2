@@ -1,0 +1,51 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Home Expercise Program API",
+    "description": "This Home Exercise Program API is part of CSE 341 Project 2, Weeks 5-8",
+    "version": "1.0.0"
+  },
+  "host": "",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/patients/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/locations/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/therapists/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/library/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  }
+}

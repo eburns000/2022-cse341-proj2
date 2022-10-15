@@ -1,0 +1,110 @@
+[{
+  "firstName": "Bobbie",
+  "lastName": "Webley",
+  "streetAddress": "123 Wenatchee Ave",
+  "city": "Wenatchee",
+  "state": "WA",
+  "zip": "98801",
+  "phone": "(509) 555-1111",
+  "email": "bobbie@gmail.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c1",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5cd",
+  "assignedExercises": [
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c7",
+      "dateAssigned": "07/01/2022",
+      "dateEnded": "08/31/2022",
+      "completed": true,
+      "note": "Awesome Job! Onward and upward."
+    },
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c9",
+      "dateAssigned": "9/1/2022",
+      "dateEnded": "",
+      "completed": false,
+      "note": "Making great progress."
+    }
+  ] 
+},{
+  "firstName": "Sally",
+  "lastName": "Fowler",
+  "streetAddress": "729 Mulberry Ln",
+  "city": "Spokane",
+  "state": "WA",
+  "zip": "99202",
+  "phone": "(509) 777-1234",
+  "email": "sally@outlook.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c2",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5ce",
+  "assignedExercises": [
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c7",
+      "dateAssigned": "8/17/2022",
+      "dateEnded": "",
+      "completed": false,
+      "note": "Might need to change things up in a bit."
+    }
+  ] 
+},{
+  "firstName": "Jimmy",
+  "lastName": "Smith",
+  "streetAddress": "811 Broadway Ave",
+  "city": "Moses Lake",
+  "state": "WA",
+  "zip": "98837",
+  "phone": "(509) 222-4321",
+  "email": "jimmy@hotmail.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c4",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5d0",
+  "assignedExercises": [
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c8",
+      "dateAssigned": "3/15/2022",
+      "dateEnded": "6/17/2022",
+      "completed": false,
+      "note": "That was a rough go. Let's take a step backward."
+    },
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c7",
+      "dateAssigned": "7/15/2022",
+      "dateEnded": "9/30/2022",
+      "completed": true,
+      "note": "Great job! Now let's go back and tackle the the f's and v's"
+    },
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c8",
+      "dateAssigned": "10/5/2022",
+      "dateEnded": "",
+      "completed": false,
+      "note": "Round 2! Let's give this a try again."
+    }
+  ] 
+},{
+  "firstName": "Taylor",
+  "lastName": "Wilkins",
+  "streetAddress": "2271 Sunrise Pl",
+  "city": "Kennewick",
+  "state": "WA",
+  "zip": "99336",
+  "phone": "(509) 989-1111",
+  "email": "taylor@yahoo.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c3",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5cf",
+  "assignedExercises": [
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5c9",
+      "dateAssigned": "9/15/2022",
+      "dateEnded": "",
+      "completed": false,
+      "note": "Making good progress. Let's try for another month then add another exercise."
+    },
+    {
+      "libraryID": "634b1da75b2b0b1e3667b5ca",
+      "dateAssigned": "10/11/2022",
+      "dateEnded": "",
+      "completed": false,
+      "note": "I think we can handle adding a new exercise."
+    }
+  ] 
+}
+]
