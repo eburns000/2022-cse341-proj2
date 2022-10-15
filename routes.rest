@@ -1,9 +1,56 @@
-// LOCALHOST
+// LOCALHOST - LOCATIONS
 ###
 GET http://localhost:8080/locations
 ###
-GET http://localhost:8080/therapists
+GET http://localhost:8080/locations/<enter id here>
+###
+POST http://localhost:8080/locations HTTP/1.1
+content-type: application/json
+
+{
+  "locationName": "Spokane Downtown",
+  "streetAddress": "528 E Spokane Falls Blvd, Ste B29",
+  "city": "Spokane",
+  "state": "WA",
+  "zip": "99202",
+  "phone": "(509) 435-0481"
+}
+###
+PUT http://localhost:8080/locations/<enter id here> HTTP/1.1
+content-type: application/json
+
+{
+  "phone": "(509) 999-9999"
+}
+###
+DELETE http://localhost:8080/locations/<enter id here>
+
+// LOCALHOST - EXERCISE LIBRARY
 ###
 GET http://localhost:8080/library
 ###
+GET http://localhost:8080/library/<enter id here>
+###
+POST http://localhost:8080/library HTTP/1.1
+content-type: application/json
+
+{
+  "exerciseName": "Articulation s, z",
+  "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
+}
+
+// LOCALHOST - THERAPISTS
+###
+GET http://localhost:8080/therapists
+###
+GET http://localhost:8080/therapists/<enter id here>
+
+
+// LOCALHOST - PATIENTS
+###
 GET http://localhost:8080/patients
+###
+GET http://localhost:8080/patients/<enter id here>
+
+
+
