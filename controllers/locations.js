@@ -9,18 +9,18 @@ const getLocations = async (req, res) => {
 
 // GET Location by ID
 const getLocationById = async (req, res) => {
-  const locationID = new ObjectID(req.params.id);
-  await Locations.find({ _id: locationID })
+  const id = new ObjectID(req.params.id);
+  await Locations.find({ _id: id })
     .then((data) => {
       if (!data)
         res
           .status(404)
-          .send({ message: 'Location not found with id = ' + locationID });
+          .send({ message: 'Location not found with id = ' + id });
       else res.status(200).send(data[0]);
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Error retrieving location with location id = ' + locationID,
+        message: 'Error retrieving location with location id = ' + id,
       });
     });
 };
@@ -49,7 +49,7 @@ const postLocation = async (req, res) => {
     .then((data) => {
       res
         .status(201)
-        .send(`New location added with the following id: ${data.insertedId}`);
+        .send(`New location added with the following id: ${data._id}`);
     })
     .catch((err) => {
       res.status(500).send({
@@ -61,36 +61,37 @@ const postLocation = async (req, res) => {
 
 // PUT Location (modify)
 const putLocationById = async (req, res) => {
-  const locationID = new ObjectID(req.params.id);
+  const id = new ObjectID(req.params.id);
   if (!req.body) {
     return res.status(400).send({
       message: 'Data to update can not be empty!',
     });
   }
 
-  await Locations.findByIdAndUpdate(locationID, req.body)
+  await Locations.findByIdAndUpdate(id, req.body)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Location with id=${locationID}. Maybe Location was not found!`,
+          message: `Cannot update Location with id=${id}. Maybe Location was not found!`,
         });
-      } else res.status(204).send({ message: 'Location was updated successfully.' });
+      } else res.status(200).send({ message: 'Location was updated successfully.' });
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Error updating Location with id=' + locationID,
+        message: 'Error updating Location with id=' + id,
       });
     });
 };
 
+// DELETE location
 const deleteLocationById = async (req, res) => {
-  const locationID = new ObjectID(req.params.id);
+  const id = new ObjectID(req.params.id);
 
-  await Locations.findByIdAndRemove(locationID)
+  await Locations.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Location with id=${locationID}. Maybe Location was not found!`,
+          message: `Cannot delete Location with id=${id}. Maybe Location was not found!`,
         });
       } else {
         res.status(200).send({
@@ -100,7 +101,7 @@ const deleteLocationById = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Could not delete Location with id=' + locationID,
+        message: 'Could not delete Location with id=' + id,
       });
     });
 };

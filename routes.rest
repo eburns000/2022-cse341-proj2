@@ -2,7 +2,7 @@
 ###
 GET http://localhost:8080/locations
 ###
-GET http://localhost:8080/locations/<enter id here>
+GET http://localhost:8080/locations/<enter id>
 ###
 POST http://localhost:8080/locations HTTP/1.1
 content-type: application/json
@@ -16,20 +16,20 @@ content-type: application/json
   "phone": "(509) 435-0481"
 }
 ###
-PUT http://localhost:8080/locations/<enter id here> HTTP/1.1
+PUT http://localhost:8080/locations/<enter id> HTTP/1.1
 content-type: application/json
 
 {
-  "phone": "(509) 999-9999"
+  "phone": "(509) 888-8888"
 }
 ###
-DELETE http://localhost:8080/locations/<enter id here>
+DELETE http://localhost:8080/locations/<enter id>
 
 // LOCALHOST - EXERCISE LIBRARY
 ###
 GET http://localhost:8080/library
 ###
-GET http://localhost:8080/library/<enter id here>
+GET http://localhost:8080/library/<enter id>
 ###
 POST http://localhost:8080/library HTTP/1.1
 content-type: application/json
@@ -38,19 +38,183 @@ content-type: application/json
   "exerciseName": "Articulation s, z",
   "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
 }
+###
+PUT http://localhost:8080/library/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "instructions": "Here are the updated instructions"
+}
+###
+DELETE http://localhost:8080/library/<enter id>
 
 // LOCALHOST - THERAPISTS
 ###
 GET http://localhost:8080/therapists
 ###
-GET http://localhost:8080/therapists/<enter id here>
+GET http://localhost:8080/therapists/<enter id>
+###
+POST http://localhost:8080/therapists HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Meredith",
+  "lastName": "Walsh",
+  "credentials": "MA CFY-SLP",
+  "discipline": "SLP"
+}
+###
+PUT http://localhost:8080/therapists/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "credentials": "MA CCC-SLP"
+}
+###
+DELETE http://localhost:8080/therapists/<enter id>
 
 
 // LOCALHOST - PATIENTS
 ###
 GET http://localhost:8080/patients
 ###
-GET http://localhost:8080/patients/<enter id here>
+GET http://localhost:8080/patients/<enter id>
+###
+POST http://localhost:8080/patients HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Josie",
+  "lastName": "Burns",  
+  "streetAddress": "2271 Sunrise Pl",
+  "city": "East Wenatchee",
+  "state": "WA",
+  "zip": "98802",
+  "phone": "(509) 888-3063",
+  "email": "josie@gmail.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c1",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5cd"
+}
+###
+PUT http://localhost:8080/patients/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "streetAddress": "1932 Mulberry Ln",
+  "city": "Wenatchee",
+  "state": "WA",
+  "zip": "98801",
+}
+###
+DELETE http://localhost:8080/patients/<enter id>
 
 
+// RENDER - LOCATIONS
+###
+GET https://two022-cse341-proj2.onrender.com/locations
+###
+GET https://two022-cse341-proj2.onrender.com/locations/<enter id>
+###
+POST https://two022-cse341-proj2.onrender.com/locations HTTP/1.1
+content-type: application/json
 
+{
+  "locationName": "Spokane Downtown",
+  "streetAddress": "528 E Spokane Falls Blvd, Ste B29",
+  "city": "Spokane",
+  "state": "WA",
+  "zip": "99202",
+  "phone": "(509) 435-0481"
+}
+###
+PUT https://two022-cse341-proj2.onrender.com/locations/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "phone": "(509) 888-8888"
+}
+###
+DELETE https://two022-cse341-proj2.onrender.com/locations/<enter id>
+
+// RENDER - EXERCISE LIBRARY
+###
+GET https://two022-cse341-proj2.onrender.com/library
+###
+GET https://two022-cse341-proj2.onrender.com/library/<enter id>
+###
+POST https://two022-cse341-proj2.onrender.com/library HTTP/1.1
+content-type: application/json
+
+{
+  "exerciseName": "Articulation s, z",
+  "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
+}
+###
+PUT https://two022-cse341-proj2.onrender.com/library/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "instructions": "Here are the updated instructions"
+}
+###
+DELETE https://two022-cse341-proj2.onrender.com/library/<enter id>
+
+// RENDER - THERAPISTS
+###
+GET https://two022-cse341-proj2.onrender.com/therapists
+###
+GET https://two022-cse341-proj2.onrender.com/therapists/<enter id>
+###
+POST https://two022-cse341-proj2.onrender.com/therapists HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Meredith",
+  "lastName": "Walsh",
+  "credentials": "MA CFY-SLP",
+  "discipline": "SLP"
+}
+###
+PUT https://two022-cse341-proj2.onrender.com/therapists/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "credentials": "MA CCC-SLP"
+}
+###
+DELETE https://two022-cse341-proj2.onrender.com/therapists/<enter id>
+
+
+// RENDER - PATIENTS
+###
+GET https://two022-cse341-proj2.onrender.com/patients
+###
+GET https://two022-cse341-proj2.onrender.com/patients/<enter id>
+###
+POST https://two022-cse341-proj2.onrender.com/patients HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Josie",
+  "lastName": "Burns",  
+  "streetAddress": "2271 Sunrise Pl",
+  "city": "East Wenatchee",
+  "state": "WA",
+  "zip": "98802",
+  "phone": "(509) 888-3063",
+  "email": "josie@gmail.com",
+  "assignedLocationID": "634b1d825b2b0b1e3667b5c1",
+  "assignedTherapistID": "634b1dc65b2b0b1e3667b5cd"
+}
+###
+PUT https://two022-cse341-proj2.onrender.com/patients/<enter id> HTTP/1.1
+content-type: application/json
+
+{
+  "streetAddress": "1932 Mulberry Ln",
+  "city": "Wenatchee",
+  "state": "WA",
+  "zip": "98801",
+}
+###
+DELETE https://two022-cse341-proj2.onrender.com/patients/<enter id>
