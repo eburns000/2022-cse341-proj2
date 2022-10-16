@@ -39,37 +39,34 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "Josie"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "Burns"
                 },
                 "streetAddress": {
-                  "example": "any"
+                  "example": "2271 Sunrise Pl"
                 },
                 "city": {
-                  "example": "any"
+                  "example": "East Wenatchee"
                 },
                 "state": {
-                  "example": "any"
+                  "example": "WA"
                 },
                 "zip": {
-                  "example": "any"
+                  "example": "98802"
                 },
                 "phone": {
-                  "example": "any"
+                  "example": "(509) 888-3063"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "josie@gmail.com"
                 },
                 "assignedLocationID": {
-                  "example": "any"
+                  "example": "634b1d825b2b0b1e3667b5c1"
                 },
                 "assignedTherapistID": {
-                  "example": "any"
-                },
-                "assignedExercises": {
-                  "example": "any"
+                  "example": "634b1dc65b2b0b1e3667b5cd"
                 }
               }
             }
@@ -119,6 +116,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "streetAddress": {
+                  "example": "1932 Mulberry Ln"
+                },
+                "city": {
+                  "example": "Wenatchee"
+                },
+                "state": {
+                  "example": "WA"
+                },
+                "zip": {
+                  "example": "98801"
+                }
+              }
+            }
           }
         ],
         "responses": {
