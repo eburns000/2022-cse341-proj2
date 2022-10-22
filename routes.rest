@@ -8,19 +8,21 @@ POST http://localhost:8080/locations HTTP/1.1
 content-type: application/json
 
 {
-  "locationName": "Spokane Downtown",
+  "locationName": "a",
   "streetAddress": "528 E Spokane Falls Blvd, Ste B29",
   "city": "Spokane",
   "state": "WA",
-  "zip": "99202",
+  "zip": "99206",
   "phone": "(509) 435-0481"
 }
 ###
-PUT http://localhost:8080/locations/634b57f0577167b1d4b7911d HTTP/1.1
+PUT http://localhost:8080/locations/634b1d825b2b0b1e3667b5c1 HTTP/1.1
 content-type: application/json
 
 {
-  "phone": "(509) 888-8888"
+  "locationName": "Wenatchee",
+  "zip": "98801",
+  "phone": "509-888-2505"
 }
 ###
 DELETE http://localhost:8080/locations/634b57f0577167b1d4b7911d
@@ -35,7 +37,7 @@ POST http://localhost:8080/library HTTP/1.1
 content-type: application/json
 
 {
-  "exerciseName": "Articulation s, z",
+  "exerciseName": "Ar",
   "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
 }
 ###
@@ -52,15 +54,17 @@ DELETE http://localhost:8080/library/634b59584e620b7d809f0117
 ###
 GET http://localhost:8080/therapists
 ###
+GET http://localhost:8080/therapists?discipline=SLP
+###
 GET http://localhost:8080/therapists/634b1dc65b2b0b1e3667b5ce
 ###
 POST http://localhost:8080/therapists HTTP/1.1
 content-type: application/json
 
 {
-  "firstName": "Meredith",
-  "lastName": "Walsh",
-  "credentials": "MA CFY-SLP",
+  "firstName": "a",
+  "lastName": "McClune",
+  "credentials": "SLPA",
   "discipline": "SLP"
 }
 ###
@@ -146,7 +150,6 @@ POST https://two022-cse341-proj2.onrender.com/library HTTP/1.1
 content-type: application/json
 
 {
-  "exerciseName": "Articulation s, z",
   "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
 }
 ###

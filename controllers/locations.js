@@ -1,10 +1,18 @@
-const { ObjectID } = require('bson');
-const Locations = require('../models/locations');
+const { ObjectID } = require("bson");
+const Locations = require("../models/locations");
 
 // GET all Locations
 const getLocations = async (req, res) => {
-  const locations = await Locations.find();
-  res.status(200).json(locations);
+  await Locations.find()
+    .then((data) => {
+      if (!data) res.status(404).send({ message: "No data returned" });
+      else res.status(200).json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error retrieving location data from server",
+      });
+    });
 };
 
 // GET Location by ID
@@ -13,26 +21,18 @@ const getLocationById = async (req, res) => {
   await Locations.find({ _id: id })
     .then((data) => {
       if (!data)
-        res
-          .status(404)
-          .send({ message: 'Location not found with id = ' + id });
+        res.status(404).send({ message: "Location not found with id = " + id });
       else res.status(200).send(data[0]);
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Error retrieving location with location id = ' + id,
+        message: "Error retrieving location with location id = " + id,
       });
     });
 };
 
 // POST Location
 const postLocation = async (req, res) => {
-  // Validate request
-  if (!req.body.locationName) {
-    res.status(400).send({ message: 'Location name is required!' });
-    return;
-  }
-
   // Creaet a new location
   const location = new Locations({
     locationName: req.body.locationName,
@@ -40,11 +40,11 @@ const postLocation = async (req, res) => {
     city: req.body.city,
     state: req.body.state,
     zip: req.body.zip,
-    phone: req.body.phone
+    phone: req.body.phone,
   });
 
   // save exercise to the library
-  location
+  await location
     .save(location)
     .then((data) => {
       res
@@ -54,7 +54,7 @@ const postLocation = async (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the location.'
+          err.message || "Some error occurred while creating the location.",
       });
     });
 };
@@ -64,21 +64,25 @@ const putLocationById = async (req, res) => {
   const id = new ObjectID(req.params.id);
   if (!req.body) {
     return res.status(400).send({
-      message: 'Data to update can not be empty!',
+      message: "Data to update can not be empty!",
     });
   }
 
-  await Locations.findByIdAndUpdate(id, req.body)
+  const update = req.body;
+  const options = { runValidators: true };
+
+  await Locations.updateOne({ _id: id }, update, options)
     .then((data) => {
       if (!data) {
         res.status(404).send({
           message: `Cannot update Location with id=${id}. Maybe Location was not found!`,
         });
-      } else res.status(200).send({ message: 'Location was updated successfully.' });
+      } else
+        res.status(200).send({ message: "Location was updated successfully." });
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Error updating Location with id=' + id,
+        message: err.message || "Error updating Location with id=" + id,
       });
     });
 };
@@ -95,18 +99,21 @@ const deleteLocationById = async (req, res) => {
         });
       } else {
         res.status(200).send({
-          message: 'Location was deleted successfully!',
+          message: "Location was deleted successfully!",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Could not delete Location with id=' + id,
+        message: "Could not delete Location with id=" + id,
       });
     });
 };
 
-
-
-module.exports = { getLocations, getLocationById, postLocation, putLocationById, deleteLocationById }
-
+module.exports = {
+  getLocations,
+  getLocationById,
+  postLocation,
+  putLocationById,
+  deleteLocationById,
+};

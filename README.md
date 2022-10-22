@@ -5,10 +5,10 @@ Current Assignment: Project 2, Week 05 Personal Assignment
 Eric Burns
 
 ## Render
-https://cse341-w01-pa.onrender.com/api-docs
+https://two022-cse341-proj2.onrender.com/api-docs/
 
 ## Video
-Week 05 Video: 
+Week 05 Video: https://youtu.be/y-RbLIy_TCA
 
 ## Test Credentials
 Not applicable for the week 04 assignment
