@@ -83,7 +83,7 @@ const putPatientById = async (req, res) => {
           message: `Cannot update Patient with id=${id}. Maybe Patient was not found!`,
         });
       } else
-        res.status(200).send({ message: "Patient was updated successfully." });
+        res.status(204).send({ message: "Patient was updated successfully." });
     })
     .catch((err) => {
       res.status(500).send({

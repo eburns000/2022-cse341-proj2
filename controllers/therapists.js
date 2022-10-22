@@ -87,7 +87,7 @@ const putTherapistById = async (req, res) => {
         });
       } else
         res
-          .status(200)
+          .status(204)
           .send({ message: "Therapist was updated successfully." });
     })
     .catch((err) => {

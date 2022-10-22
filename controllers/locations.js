@@ -78,7 +78,7 @@ const putLocationById = async (req, res) => {
           message: `Cannot update Location with id=${id}. Maybe Location was not found!`,
         });
       } else
-        res.status(200).send({ message: "Location was updated successfully." });
+        res.status(204).send({ message: "Location was updated successfully." });
     })
     .catch((err) => {
       res.status(500).send({

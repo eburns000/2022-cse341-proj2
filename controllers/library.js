@@ -78,7 +78,7 @@ const putExerciseById = async (req, res) => {
         });
       } else
         res
-          .status(200)
+          .status(204)
           .send({ message: "Exercise in Library was updated successfully." });
     })
     .catch((err) => {
