@@ -79,7 +79,7 @@ const putExerciseById = async (req, res) => {
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Exercise in library with id=${id}. Maybe Exercise was not found!`,
+          message: `Cannot update Exercise in library with id=${id}. Exercise was not found!`,
         });
       } else
         res
@@ -87,13 +87,25 @@ const putExerciseById = async (req, res) => {
           .send({ message: "Exercise in Library was updated successfully." });
     })
     .catch((err) => {
+      switch(err.name){
+        case "ValidationError":
+          res.status(422).send({
+            message: err.message || `Validation failed; check data entered and try again.`,
+          });
+          break;
+        case "CastError":
+          res.status(404).send({
+            message: `Error retrieving Exercise with id = ${id}; not a valid Mongo Object id`,
+          });
+          break;
+        default:
+          res.status(500).send({
+            message: err.message || `Error updating Exercise in Library with id=${id}; Unknown server error`,
+          });
+      }
+
       console.log(`Error message: ${err.message}`); // CHANGED - added
-      if (err.errors) console.log(`Error instructions: ${err}`); // CHANGED - added
-      // check for CastError - not a valid ID, ValidationError - pass on validation message
-      // consider adding custom messages for validation rather than built-in messages
-      res.status(500).send({
-        message: err.message || `Error updating Exercise in Library with id=${id}`,
-      });
+      if (err.errors) console.log(`Error: ${err.name}`); // CHANGED - added
     });
 };
 
