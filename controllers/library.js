@@ -16,18 +16,23 @@ const getLibrary = async (req, res) => {
     });
 };
 
-// GET Exercise by ID
+// GET Exercise by ID ***EB-TODO: This is fixed - make this change for all get by ID functions
 const getExerciseById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
-  await Library.find({ _id: id })
+  // const id = new ObjectID(req.params.id); -- don't use this for findById(0)
+  const id = req.params.id; // findById casts id as a MongoDB ObjectID
+  // it's important to keep it as a string so that it is returned 
+  // as null if not found
+  await Library.findById(id) // don't need to pass an object like { _id: id }
     .then((data) => {
+      console.log(data);
       if (!data)
-        res.status(404).send({ message: "Exercise not found with id = " + id });
-      else res.status(200).send(data[0]);
+        res.status(404).send({ message: `Exercise not found with id = ${id}` });
+      else res.status(200).send(data); // findById returns only one
     })
     .catch((err) => {
+      console.log(`Error message: ${err.message}`);
       res.status(500).send({
-        message: "Error retrieving Exercise with id = " + id,
+        message: `Error retrieving Exercise with id = ${id}; not a valid MongoDB Object id`,
       });
     });
 };
@@ -58,9 +63,9 @@ const postExerciseToLibrary = async (req, res) => {
     });
 };
 
-// PUT Exercise in Library (modify)
+// PUT Exercise in Library (modify) EB-TODO: MADE CHANGES ON 10/24 - MAKE THESE THROUGHOUT
 const putExerciseById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
+  const id = req.params.id; // CHANGED - was getting the object
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -69,8 +74,8 @@ const putExerciseById = async (req, res) => {
 
   const update = req.body;
   const options = { runValidators: true };
-
-  await Library.updateOne({ _id: id }, update, options)
+  // for findByIdAndUpdate, id can be object, number, or string - if string, method casts it to an object
+  await Library.findByIdAndUpdate(id, update, options) // CHANGED - WAS updateOne
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -82,8 +87,12 @@ const putExerciseById = async (req, res) => {
           .send({ message: "Exercise in Library was updated successfully." });
     })
     .catch((err) => {
+      console.log(`Error message: ${err.message}`); // CHANGED - added
+      if (err.errors) console.log(`Error instructions: ${err}`); // CHANGED - added
+      // check for CastError - not a valid ID, ValidationError - pass on validation message
+      // consider adding custom messages for validation rather than built-in messages
       res.status(500).send({
-        message: "Error updating Exercise in Library with id=" + id,
+        message: err.message || `Error updating Exercise in Library with id=${id}`,
       });
     });
 };

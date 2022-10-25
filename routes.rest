@@ -31,7 +31,7 @@ DELETE http://localhost:8080/locations/634b57f0577167b1d4b7911d
 ###
 GET http://localhost:8080/library
 ###
-GET http://localhost:8080/library/634b1da75b2b0b1e3667b5c7
+GET http://localhost:8080/library/634b1da75b2b0b1e3667b5d7
 ###
 POST http://localhost:8080/library HTTP/1.1
 content-type: application/json
@@ -41,11 +41,11 @@ content-type: application/json
   "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
 }
 ###
-PUT http://localhost:8080/library/634b59584e620b7d809f0117 HTTP/1.1
+PUT http://localhost:8080/library/634b1da75b2b0b1e3667b5c8 HTTP/1.1
 content-type: application/json
 
 {
-  "instructions": "Here are the updated instructions"
+  "instructions": "ab"
 }
 ###
 DELETE http://localhost:8080/library/634b59584e620b7d809f0117
@@ -220,4 +220,4 @@ content-type: application/json
   "zip": "98801"
 }
 ###
-DELETE https://two022-cse341-proj2.onrender.com/patients/<enter id>
+DELETE https://two022-cse341-proj2.onrender.com/patients/654
