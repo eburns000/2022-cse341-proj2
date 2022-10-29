@@ -1,6 +1,11 @@
 const { ObjectID } = require("bson");
 const Therapists = require("../models/therapists");
 
+// for testing purposes - get user info - /therapists/userinfo
+const getUserInfo = (req, res) => {
+  res.json(req.user);
+};
+
 // Get Therapists
 const getTherapists = async (req, res) => {
   // get all if no query parameter, or allow to query by discipline
@@ -126,4 +131,5 @@ module.exports = {
   postTherapist,
   putTherapistById,
   deleteTherapistById,
+  getUserInfo,
 };

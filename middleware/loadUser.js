@@ -4,7 +4,8 @@ const User = require("../models/user");
 //request -> loadUser (middleware) -> favoriteScriptures
 // all middleware takes a req, res, and next
 // the next() is what sends it onto the next method to be called
-
+// Why is this in middleware? Because we need to get the user information
+// before we allow access onto other resources. 
 const loadUser = async (req, res, next) => {
   
   try {
@@ -16,6 +17,10 @@ const loadUser = async (req, res, next) => {
     // retrieve user information from DB or add user to DB if does not exist
     const user = await findOrCreateUser(authZeroUser);
     console.log(user);
+
+    // next step: make this user available to our controller - the way to do this
+    // is to store on the req object - see 1:38:52
+    // req.user = user;
 
   } catch (error) {
     console.log(`Error attempting to access user: ${error.message}`);
