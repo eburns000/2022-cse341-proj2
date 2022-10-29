@@ -3,7 +3,7 @@ const librarySchema = require("./library");
 
 const userSchema = new mongoose.Schema(
   {
-    identifier: {
+    identifier: { // sub value from Google
       type: String,
       required: true,
       unique: true,
