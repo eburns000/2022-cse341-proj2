@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const librarySchema = require("./library");
+const exerciseSchema = require("./exercises");
 
 const userSchema = new mongoose.Schema(
   {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
     picture: {
       type: String,
     },
-    assignedExercises: [librarySchema],
+    assignedExercises: [exerciseSchema],
   },
   { collection: "users", timestamps: true }
 );
