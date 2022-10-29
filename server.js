@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db.connect');
+const dbConfig = require('./config/db.config.js');
 const app = express();
 const swaggerUi = require('swagger-ui-express'); // move to index?
 const swaggerDocument = require('./swagger.json'); // move to index?
@@ -13,7 +14,7 @@ app
 // connect to the DB
 connectDB();
 
-const port = process.env.PORT || 8080;
+const port = dbConfig.port;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
 });

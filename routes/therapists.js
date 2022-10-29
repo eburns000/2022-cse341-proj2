@@ -3,6 +3,11 @@ const router = express.Router();
 const therapistsController = require('../controllers/therapists');
 // could instead do:
 // import { getTherapists, postTherapist, ...} from "../controllers/therapists";
+const loadUser = require("../middleware/loadUser");
+
+
+// require user
+router.use([loadUser]);
 
 router.get('/', therapistsController.getTherapists);
 router.get('/:id', therapistsController.getTherapistById);
