@@ -110,3 +110,4 @@ dist
 # other files added to gitignore
 logger.js
 .eslintrc.json
+.vscode/settings.json

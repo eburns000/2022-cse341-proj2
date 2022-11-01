@@ -221,3 +221,8 @@ content-type: application/json
 }
 ###
 DELETE https://two022-cse341-proj2.onrender.com/patients/654
+
+###
+GET https://two022-cse341-proj2.onrender.com/therapists/userinfo
+content-type: application/json
+Authorization: Bearer {{accessToken}} 
