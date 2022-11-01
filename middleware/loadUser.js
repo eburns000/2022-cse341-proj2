@@ -12,15 +12,15 @@ const loadUser = async (req, res, next) => {
     // get user information from Auth0  
     console.log(`req.headers.authorization: ${req.headers.authorization}`);
     const authZeroUser = await fetchAuthZeroUser(req.headers.authorization);
-    console.log(authZeroUser);
+    console.log(`authZerouser: ${authZeroUser}`);
 
     // retrieve user information from DB or add user to DB if does not exist
     const user = await findOrCreateUser(authZeroUser);
-    console.log(user);
+    console.log(`user: ${user}`);
 
     // next step: make this user available to our controller - the way to do this
     // is to store on the req object - see 1:38:52
-    // req.user = user;
+    req.user = user;
 
   } catch (error) {
     console.log(`Error attempting to access user: ${error.message}`);
