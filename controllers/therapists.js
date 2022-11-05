@@ -1,11 +1,6 @@
 const { ObjectID } = require("bson");
 const Therapists = require("../models/therapists");
 
-// for testing purposes - get user info - /therapists/userinfo
-const getUserInfo = (req, res) => {
-  res.json(req.user);
-};
-
 // Get Therapists
 const getTherapists = async (req, res) => {
   // get all if no query parameter, or allow to query by discipline
@@ -31,18 +26,21 @@ const getTherapists = async (req, res) => {
 
 // GET Therapist by ID
 const getTherapistById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
-  await Therapists.find({ _id: id })
+  const id = req.params.id; // findById casts id as a MongoDB ObjectID
+
+  await Therapists.findById(id)
     .then((data) => {
+      console.log(data);
       if (!data)
         res
           .status(404)
-          .send({ message: "Therapist not found with id = " + id });
-      else res.status(200).send(data[0]);
+          .send({ message: `Therapist not found with id = ${id}` });
+      else res.status(200).send(data);
     })
     .catch((err) => {
+      console.log(`Error message: ${err.message}`);
       res.status(500).send({
-        message: "Error retrieving therapist with therapist id = " + id,
+        message: `Error retrieving Therapist with id = ${id}; not a valid MongoDB Object id`,
       });
     });
 };
@@ -75,20 +73,21 @@ const postTherapist = async (req, res) => {
 
 // PUT Therapist (modify)
 const putTherapistById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
+  const id = req.params.id;
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
     });
   }
+
   const update = req.body;
   const options = { runValidators: true };
-  
-  await Therapists.updateOne({ _id: id }, update, options)
+
+  await Therapists.findByIdAndUpdate(id, update, options)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Therapist with id=${id}. Maybe Therapist was not found!`,
+          message: `Cannot update Therapist with id=${id}. Therapist was not found!`,
         });
       } else
         res
@@ -96,9 +95,29 @@ const putTherapistById = async (req, res) => {
           .send({ message: "Therapist was updated successfully." });
     })
     .catch((err) => {
-      res.status(500).send({
-        message: "Error updating Therapist with id=" + id,
-      });
+      switch (err.name) {
+        case "ValidationError":
+          res.status(422).send({
+            message:
+              err.message ||
+              `Validation failed; check data entered and try again.`,
+          });
+          break;
+        case "CastError":
+          res.status(404).send({
+            message: `Error retrieving Therapist with id = ${id}; not a valid Mongo Object id`,
+          });
+          break;
+        default:
+          res.status(500).send({
+            message:
+              err.message ||
+              `Error updating Therapist in Library with id=${id}; Unknown server error`,
+          });
+      }
+
+      console.log(`Error message: ${err.message}`);
+      if (err.errors) console.log(`Error: ${err.name}`);
     });
 };
 
@@ -131,5 +150,4 @@ module.exports = {
   postTherapist,
   putTherapistById,
   deleteTherapistById,
-  getUserInfo,
 };

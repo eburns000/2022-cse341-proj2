@@ -16,18 +16,16 @@ const getLibrary = async (req, res) => {
     });
 };
 
-// GET Exercise by ID ***EB-TODO: This is fixed - make this change for all get by ID functions
+// GET Exercise by ID
 const getExerciseById = async (req, res) => {
-  // const id = new ObjectID(req.params.id); -- don't use this for findById(0)
   const id = req.params.id; // findById casts id as a MongoDB ObjectID
-  // it's important to keep it as a string so that it is returned 
-  // as null if not found
-  await Library.findById(id) // don't need to pass an object like { _id: id }
+
+  await Library.findById(id)
     .then((data) => {
       console.log(data);
       if (!data)
         res.status(404).send({ message: `Exercise not found with id = ${id}` });
-      else res.status(200).send(data); // findById returns only one
+      else res.status(200).send(data);
     })
     .catch((err) => {
       console.log(`Error message: ${err.message}`);
@@ -63,9 +61,9 @@ const postExerciseToLibrary = async (req, res) => {
     });
 };
 
-// PUT Exercise in Library (modify) EB-TODO: MADE CHANGES ON 10/24 - MAKE THESE THROUGHOUT
+// PUT Exercise in Library (modify)
 const putExerciseById = async (req, res) => {
-  const id = req.params.id; // CHANGED - was getting the object
+  const id = req.params.id;
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -75,7 +73,7 @@ const putExerciseById = async (req, res) => {
   const update = req.body;
   const options = { runValidators: true };
   // for findByIdAndUpdate, id can be object, number, or string - if string, method casts it to an object
-  await Library.findByIdAndUpdate(id, update, options) // CHANGED - WAS updateOne
+  await Library.findByIdAndUpdate(id, update, options)
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -87,10 +85,12 @@ const putExerciseById = async (req, res) => {
           .send({ message: "Exercise in Library was updated successfully." });
     })
     .catch((err) => {
-      switch(err.name){
+      switch (err.name) {
         case "ValidationError":
           res.status(422).send({
-            message: err.message || `Validation failed; check data entered and try again.`,
+            message:
+              err.message ||
+              `Validation failed; check data entered and try again.`,
           });
           break;
         case "CastError":
@@ -100,7 +100,9 @@ const putExerciseById = async (req, res) => {
           break;
         default:
           res.status(500).send({
-            message: err.message || `Error updating Exercise in Library with id=${id}; Unknown server error`,
+            message:
+              err.message ||
+              `Error updating Exercise in Library with id=${id}; Unknown server error`,
           });
       }
 

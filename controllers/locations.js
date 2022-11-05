@@ -17,16 +17,19 @@ const getLocations = async (req, res) => {
 
 // GET Location by ID
 const getLocationById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
-  await Locations.find({ _id: id })
+  const id = req.params.id; // findById casts id as a MongoDB ObjectID
+
+  await Locations.findById(id)
     .then((data) => {
+      console.log(data);
       if (!data)
-        res.status(404).send({ message: "Location not found with id = " + id });
-      else res.status(200).send(data[0]);
+        res.status(404).send({ message: `Location not found with id = ${id}` });
+      else res.status(200).send(data);
     })
     .catch((err) => {
+      console.log(`Error message: ${err.message}`);
       res.status(500).send({
-        message: "Error retrieving location with location id = " + id,
+        message: `Error retrieving Location with id = ${id}; not a valid MongoDB Object id`,
       });
     });
 };
@@ -43,7 +46,7 @@ const postLocation = async (req, res) => {
     phone: req.body.phone,
   });
 
-  // save exercise to the library
+  // save location
   await location
     .save(location)
     .then((data) => {
@@ -61,7 +64,7 @@ const postLocation = async (req, res) => {
 
 // PUT Location (modify)
 const putLocationById = async (req, res) => {
-  const id = new ObjectID(req.params.id);
+  const id = req.params.id;
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -70,20 +73,42 @@ const putLocationById = async (req, res) => {
 
   const update = req.body;
   const options = { runValidators: true };
-
-  await Locations.updateOne({ _id: id }, update, options)
+  // for findByIdAndUpdate, id can be object, number, or string - if string, method casts it to an object
+  await Locations.findByIdAndUpdate(id, update, options) // CHANGED - WAS updateOne
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Location with id=${id}. Maybe Location was not found!`,
+          message: `Cannot update Location with id=${id}. Location was not found!`,
         });
       } else
-        res.status(204).send({ message: "Location was updated successfully." });
+        res
+          .status(204)
+          .send({ message: "Location was updated successfully." });
     })
     .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Error updating Location with id=" + id,
-      });
+      switch (err.name) {
+        case "ValidationError":
+          res.status(422).send({
+            message:
+              err.message ||
+              `Validation failed; check data entered and try again.`,
+          });
+          break;
+        case "CastError":
+          res.status(404).send({
+            message: `Error retrieving Location with id = ${id}; not a valid Mongo Object id`,
+          });
+          break;
+        default:
+          res.status(500).send({
+            message:
+              err.message ||
+              `Error updating Location with id=${id}; Unknown server error`,
+          });
+      }
+
+      console.log(`Error message: ${err.message}`); // CHANGED - added
+      if (err.errors) console.log(`Error: ${err.name}`); // CHANGED - added
     });
 };
 
