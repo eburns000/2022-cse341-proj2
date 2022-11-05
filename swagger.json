@@ -218,22 +218,22 @@
               "type": "object",
               "properties": {
                 "locationName": {
-                  "example": "any"
+                  "example": "Seattle"
                 },
                 "streetAddress": {
-                  "example": "any"
+                  "example": "123 Main St"
                 },
                 "city": {
-                  "example": "any"
+                  "example": "Seattle"
                 },
                 "state": {
-                  "example": "any"
+                  "example": "WA"
                 },
                 "zip": {
-                  "example": "any"
+                  "example": "98111"
                 },
                 "phone": {
-                  "example": "any"
+                  "example": "(253) 555-1212"
                 }
               }
             }
@@ -280,6 +280,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {                
+                "phone": {
+                  "example": "(800) 111-2345"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -355,16 +367,16 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "John"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "Therapist"
                 },
                 "credentials": {
-                  "example": "any"
+                  "example": "MS CCC-SLP"
                 },
                 "discipline": {
-                  "example": "any"
+                  "example": "SLP"
                 }
               }
             }
@@ -411,6 +423,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {                
+                "lastName": {
+                  "example": "Smith"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -480,10 +504,10 @@
               "type": "object",
               "properties": {
                 "exerciseName": {
-                  "example": "any"
+                  "example": "Swallowing 1"
                 },
                 "instructions": {
-                  "example": "any"
+                  "example": "Step 1, Step 2, Step 3"
                 }
               }
             }
@@ -530,6 +554,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {                
+                "instructions": {
+                  "example": "Have the patient begin by sticking out their tongue"
+                }
+              }
+            }
           }
         ],
         "responses": {
