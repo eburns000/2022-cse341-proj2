@@ -22,11 +22,15 @@ const loadUser = async (req, res, next) => {
     // is to store on the req object - see 1:38:52
     req.user = user;
 
-  } catch (error) {
-    console.log(`Error attempting to access user: ${error.message}`);
-  }
+    // if we are authenticated, then move onto the next step past this middleware
+    next();
 
-  next();
+  } catch (error) {
+    // otherwise, return unauthorized access response
+    console.log(`Error attempting to access user: ${error.message}`);
+    res.status(401).send({ message: "Unauthorized Access. Access token required." })
+  }
+  
 };
 
 // helper function: GET request - user info - need to pass in access token into header
