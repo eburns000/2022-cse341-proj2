@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const locationsController = require('../controllers/locations');
-const { route } = require('./library');
+// const { route } = require('./library'); // this should not be needed
+const loadUser = require("../middleware/loadUser");
+
+// require user - middleware - let's load the user before we proceed
+router.use([loadUser]);
 
 router.get('/', locationsController.getLocations);
 router.get('/:id', locationsController.getLocationById);
