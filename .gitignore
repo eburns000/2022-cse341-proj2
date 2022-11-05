@@ -111,3 +111,4 @@ dist
 logger.js
 .eslintrc.json
 .vscode/settings.json
+swagger-old.json
