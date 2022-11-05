@@ -1,11 +1,16 @@
 // LOCALHOST - LOCATIONS
 ###
 GET http://localhost:8080/locations
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET http://localhost:8080/locations/634b1d825b2b0b1e3667b5c1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST http://localhost:8080/locations HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "locationName": "a",
@@ -18,6 +23,7 @@ content-type: application/json
 ###
 PUT http://localhost:8080/locations/634b1d825b2b0b1e3667b5c1 HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "locationName": "Wenatchee",
@@ -26,15 +32,22 @@ content-type: application/json
 }
 ###
 DELETE http://localhost:8080/locations/634b57f0577167b1d4b7911d
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // LOCALHOST - EXERCISE LIBRARY
 ###
 GET http://localhost:8080/library
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET http://localhost:8080/library/634b1da75b2b0b1e3667b5d7
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST http://localhost:8080/library HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "exerciseName": "Ar",
@@ -43,26 +56,35 @@ content-type: application/json
 ###
 PUT http://localhost:8080/library/634b1da75b2b0b1e3667b5c8 HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "instructions": "abfasdfasdfasdfasdf"
 }
 ###
 DELETE http://localhost:8080/library/634b59584e620b7d809f0117
-
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 // LOCALHOST - THERAPISTS
 ###
 GET http://localhost:8080/therapists
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET http://localhost:8080/therapists?discipline=SLP
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET http://localhost:8080/therapists/634b1dc65b2b0b1e3667b5ce
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST http://localhost:8080/therapists HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
-  "firstName": "a",
+  "firstName": "AnnaGene2",
   "lastName": "McClune",
   "credentials": "SLPA",
   "discipline": "SLP"
@@ -70,22 +92,29 @@ content-type: application/json
 ###
 PUT http://localhost:8080/therapists/634b59b04e620b7d809f011d HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "credentials": "MA CCC-SLP"
 }
 ###
-DELETE http://localhost:8080/therapists/634b59b04e620b7d809f011d
-
+DELETE http://localhost:8080/therapists/636682ddab716ac2671e1f79
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // LOCALHOST - PATIENTS
 ###
 GET http://localhost:8080/patients
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET http://localhost:8080/patients/634b20b45b2b0b1e3667b5d8
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST http://localhost:8080/patients HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "firstName": "Josie",
@@ -102,6 +131,7 @@ content-type: application/json
 ###
 PUT http://localhost:8080/patients/634b5a6c4e620b7d809f012c HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "streetAddress": "1932 Mulberry Ln",
@@ -111,16 +141,29 @@ content-type: application/json
 }
 ###
 DELETE http://localhost:8080/patients/634b5a6c4e620b7d809f012c
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
+
+// LOCALHOST - GET USER INFO
+###
+GET http://localhost:8080/userinfo
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // RENDER - LOCATIONS
 ###
 GET https://two022-cse341-proj2.onrender.com/locations
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET https://two022-cse341-proj2.onrender.com/locations/<enter id>
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST https://two022-cse341-proj2.onrender.com/locations HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "locationName": "Spokane Downtown",
@@ -133,21 +176,29 @@ content-type: application/json
 ###
 PUT https://two022-cse341-proj2.onrender.com/locations/<enter id> HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "phone": "(509) 888-8888"
 }
 ###
 DELETE https://two022-cse341-proj2.onrender.com/locations/<enter id>
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // RENDER - EXERCISE LIBRARY
 ###
 GET https://two022-cse341-proj2.onrender.com/library
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET https://two022-cse341-proj2.onrender.com/library/634b1da75b2b0b1e3667b5c7
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST https://two022-cse341-proj2.onrender.com/library HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "instructions": "Either the tongue tip or the anterior part of the tongue just behind the tip is raised and held close to the alveolar ridge (the small bump just behind the upper front teeth); air is expelled through the mouth between the alveolar ridge and tongue, then forced downward by the upper front teeth."
@@ -155,21 +206,29 @@ content-type: application/json
 ###
 PUT https://two022-cse341-proj2.onrender.com/library/<enter id> HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "instructions": "Here are the updated instructions"
 }
 ###
 DELETE https://two022-cse341-proj2.onrender.com/library/<enter id>
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // RENDER - THERAPISTS
 ###
 GET https://two022-cse341-proj2.onrender.com/therapists
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET https://two022-cse341-proj2.onrender.com/therapists/<enter id>
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST https://two022-cse341-proj2.onrender.com/therapists HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "firstName": "Meredith",
@@ -180,22 +239,29 @@ content-type: application/json
 ###
 PUT https://two022-cse341-proj2.onrender.com/therapists/<enter id> HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "credentials": "MA CCC-SLP"
 }
 ###
 DELETE https://two022-cse341-proj2.onrender.com/therapists/<enter id>
-
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 // RENDER - PATIENTS
 ###
 GET https://two022-cse341-proj2.onrender.com/patients
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 GET https://two022-cse341-proj2.onrender.com/patients/<enter id>
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 ###
 POST https://two022-cse341-proj2.onrender.com/patients HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "firstName": "Josie",
@@ -212,6 +278,7 @@ content-type: application/json
 ###
 PUT https://two022-cse341-proj2.onrender.com/patients/634b5bcbd463ea256e4f3bd3 HTTP/1.1
 content-type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "streetAddress": "1932 Mulberry Ln",
@@ -221,8 +288,11 @@ content-type: application/json
 }
 ###
 DELETE https://two022-cse341-proj2.onrender.com/patients/654
+content-type: application/json
+Authorization: Bearer {{accessToken}}
 
+// RENDER - GET USER INFO
 ###
-GET https://two022-cse341-proj2.onrender.com/therapists/userinfo
+GET https://two022-cse341-proj2.onrender.com/userinfo
 content-type: application/json
 Authorization: Bearer {{accessToken}} 
