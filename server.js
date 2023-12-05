@@ -4,16 +4,19 @@ const dbConfig = require("./config/db.config.js");
 const app = express();
 const swaggerUi = require("swagger-ui-express"); // move to index?
 const swaggerDocument = require("./swagger.json"); // move to index?
+const cors = require("cors");
+
+// .use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// })
 
 app
-  .use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  })
+  .use(cors())
   .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument)) // move to index?
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
