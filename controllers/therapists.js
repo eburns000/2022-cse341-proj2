@@ -9,7 +9,7 @@ const getTherapists = async (req, res) => {
     : {};
 
   const sort = { discipline: 1, lastName: 1, firstName: 1 }; // sort by
-  const projection = { _id: 0, lastName: 1, firstName: 1, credentials: 1 }; // only show fields
+  const projection = { _id: 1, lastName: 1, firstName: 1, credentials: 1 }; // only show fields
 
   await Therapists.find(query, projection)
     .sort(sort)
